@@ -13,7 +13,7 @@ const Dashboard = () => {
   });
   const [blogs, setBlogs] = useState([]);
   const onChangeHandler = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const fileHandler = (e) => {
@@ -30,7 +30,7 @@ const Dashboard = () => {
     data.append("image", formData.image);
     try {
       const res = await axios.post(
-        "https://blogapp-rf2t.onrender.com/blog/create",
+        `${import.meta.env.VITE_API_LOCALHOST}/blog/create`,
         formData,
         {
           headers: {
@@ -53,7 +53,7 @@ const Dashboard = () => {
   useEffect(() => {
     const allBlogs = async () => {
       try {
-        const res = await axios.get("https://blogapp-rf2t.onrender.com/blog/all", {
+        const res = await axios.get(`${import.meta.env.VITE_API_LOCALHOST}/blog/all`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -70,7 +70,7 @@ const Dashboard = () => {
   const removeBlog = async (blogId) => {
     try {
       const res = await axios.delete(
-        `https://blogapp-rf2t.onrender.com/blog/delete/${blogId}`,
+        `${import.meta.env.VITE_API_LOCALHOST}/blog/delete/${blogId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -175,7 +175,7 @@ const Dashboard = () => {
                       <td className="border px-4 py-2">{blog.category}</td>
                       <td className="border px-4 py-2">
                         <img
-                          src={`https://blogapp-rf2t.onrender.com/images/${blog.image}`}
+                          src={`${import.meta.env.VITE_API_LOCALHOST}/images/${blog.image}`}
                           alt={blog.title}
                           className="w-16 h-16 object-cover mx-auto"
                         />
