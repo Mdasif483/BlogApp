@@ -23,5 +23,5 @@ app.get('/' , (req, res)=>{
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
   connectDB();
-  console.log(`Server is running on port https://blogapp-1-xq06.onrender.com`);
+  console.log(`Server is running on port ${PORT}`);
 });
